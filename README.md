@@ -1,4 +1,4 @@
-# React Bank Project
+# WorldWise React Project
 
 This is a project from Udemy "Ultimate React Course 2024: React, Next.js, Redux & More" by Jonas Schmedtmann.
 
@@ -6,10 +6,10 @@ This is a project from Udemy "Ultimate React Course 2024: React, Next.js, Redux 
 
 Open the terminal in VSCode, make sure you are in the project's directory, and run:
 
-### `npm start`
+### `npm run dev`
 
 Runs the app in the development mode.\
-It should automatically open [http://localhost:3000](http://localhost:3000) in your browser.
+Ctrl click [http://localhost:5173](http://localhost:5173) to open in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
