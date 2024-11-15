@@ -1,6 +1,8 @@
-// import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+
 import styles from "./CityItem.module.css";
+import useCities from "../../contexts/useCities";
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -10,11 +12,14 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 function CityItem({ city }) {
+  const { currentCity } = useCities();
   const { cityName, emoji, date, id, position } = city;
   return (
     <li>
       <Link
-        className={styles.cityItem}
+        className={`${styles.cityItem} ${
+          id === currentCity.id ? styles["cityItem--active"] : ""
+        }`}
         to={`${id}?lat=${position.lat}&lng=${position.lng}`}
       >
         <span className={styles.emoji}>{emoji}</span>
@@ -26,15 +31,18 @@ function CityItem({ city }) {
   );
 }
 
-// CityItem.propTypes = {
-//   city: PropTypes.objectOf(
-//     PropTypes.shape({
-//       cityName: PropTypes.string,
-//       emoji: PropTypes.any,
-//       date: PropTypes.string,
-//       // Add other city properties here
-//     })
-//   ),
-// };
+CityItem.propTypes = {
+  city: PropTypes.shape({
+    id: PropTypes.string,
+    cityName: PropTypes.string,
+    country: PropTypes.string,
+    emoji: PropTypes.string,
+    date: PropTypes.string,
+    position: PropTypes.shape({
+      lat: PropTypes.number,
+      lng: PropTypes.number,
+    }),
+  }),
+};
 
 export default CityItem;
