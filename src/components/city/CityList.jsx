@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import Spinner from "../spinner/Spinner";
 import Message from "../message/Message";
 import CityItem from "./CityItem";
@@ -22,14 +22,14 @@ function CityList() {
   );
 }
 
-CityList.propTypes = {
-  cities: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      // Add other city properties here
-    })
-  ),
-  isLoading: PropTypes.bool,
-};
+// CityList.propTypes = {
+//   cities: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.number,
+//       // Add other city properties here
+//     })
+//   ),
+//   isLoading: PropTypes.bool,
+// };
 
 export default CityList;
