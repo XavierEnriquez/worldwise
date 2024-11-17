@@ -8,6 +8,10 @@
   gap: 2rem;
 }
 
+.form p {
+  font-size: large;
+}
+
 .row {
   display: flex;
   flex-direction: column;
@@ -21,6 +25,7 @@
 }
 
 .flag {
+  color: var(--color-dark--2);
   position: absolute;
   right: 1rem;
   top: 2.7rem;
