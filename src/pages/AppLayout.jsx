@@ -1,5 +1,5 @@
 import Sidebar from "../components/sidebar/Sidebar";
-import Map from "../components/map/map";
+import Map from "../components/map/Map";
 import styles from "./AppLayout.module.css";
 
 function AppLayout() {
