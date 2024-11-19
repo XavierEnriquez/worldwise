@@ -17,7 +17,7 @@ export default function Homepage() {
           adventures may take you. Never forget the wonderful experiences while
           sharing them with the friends you will make all around the world.
         </h2>
-        <Link to="/app" className="cta">
+        <Link to="/login" className="cta">
           Start the Adventure
         </Link>
       </section>
