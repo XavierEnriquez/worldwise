@@ -19,15 +19,18 @@ import Button from "../../components/button/Button";
 function Map() {
   const { cities } = useCities();
 
-  const [mapPosition, setMapPosition] = useState([36, -15]);
-  const [mapZoom, setMapZoom] = useState(3);
+  const [mapPosition, setMapPosition] = useState([25, -15]);
+  const [mapZoom, setMapZoom] = useState(2);
   const {
     isLoading: loadingPosition,
     position: geoPosition,
     getPosition,
   } = useGeolocation();
 
+  const [userGeoPos, setUserGeoPos] = useState(null);
+
   const [mapLat, mapLng] = useUrlPosition();
+  const navigate = useNavigate();
 
   useEffect(
     function () {
@@ -41,16 +44,27 @@ function Map() {
 
   useEffect(
     function () {
-      if (geoPosition) setMapPosition([geoPosition.lat, geoPosition.lng]);
-      setMapZoom(6);
+      if (geoPosition) setUserGeoPos(geoPosition);
     },
     [geoPosition]
   );
+  useEffect(
+    function () {
+      if (userGeoPos)
+        navigate(`form?lat=${userGeoPos.lat}&lng=${userGeoPos.lng}`);
+      setUserGeoPos(null);
+    },
+    [userGeoPos, navigate]
+  );
+
+  function handleYourPosition() {
+    geoPosition ? setUserGeoPos(geoPosition) : getPosition();
+  }
 
   return (
     <div className={styles.mapContainer}>
       {!geoPosition && (
-        <Button type="position" onClick={getPosition}>
+        <Button type="position" onClick={handleYourPosition}>
           {loadingPosition ? "Loading..." : "Use your position"}
         </Button>
       )}
